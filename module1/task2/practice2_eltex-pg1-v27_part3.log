@@ -186,6 +186,99 @@ remote: Compressing objects: 100% (12/12), done.
 remote: Total 17 (delta 0), reused 17 (delta 0), pack-reused 0 (from 0)
 Receiving objects: 100% (17/17), 10.53 KiB | 829.00 KiB/s, done.
 
+root@eltex-practice2-pg1-v27:~/eltex/module1/task2# cp /root/practice2_eltex-pg1-v27_part3.log /root/eltex/module1/task2
+root@eltex-practice2-pg1-v27:~/eltex/module1/task2# ls
+practice2_eltex-pg1-v27_part1.log  practice2_eltex-pg1-v27_part3.log
+practice2_eltex-pg1-v27_part2.log
+root@eltex-practice2-pg1-v27:~/eltex/module1/task2# git status
+On branch main
+Your branch is up to date with 'origin/main'.
 
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	practice2_eltex-pg1-v27_part3.log
+
+nothing added to commit but untracked files present (use "git add" to track)
+root@eltex-practice2-pg1-v27:~/eltex/module1/task2# git add .
+root@eltex-practice2-pg1-v27:~/eltex/module1/task2# git commit -m "task2"
+[main f00d8bd] task2
+ 1 file changed, 191 insertions(+)
+ create mode 100644 module1/task2/practice2_eltex-pg1-v27_part3.log
+root@eltex-practice2-pg1-v27:~/eltex/module1/task2# git push
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 3.03 KiB | 3.03 MiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/manisnat/eltex.git
+   eda9c17..f00d8bd  main -> main
+
+root@eltex-practice2-pg1-v27:~/eltex_clone/eltex# git fetch
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 5 (delta 1), reused 5 (delta 1), pack-reused 0 (from 0)
+Unpacking objects: 100% (5/5), 3.01 KiB | 3.01 MiB/s, done.
+From https://github.com/manisnat/eltex
+   eda9c17..f00d8bd  main       -> origin/main
+
+root@eltex-practice2-pg1-v27:~/eltex_clone/eltex# git log origin/main
+commit f00d8bde824d85e34739633f10d8a0f3136489fb (origin/main, origin/HEAD)
+Author: manisnat <LiZaP707464@mail.ru>
+Date:   Tue Jul 15 14:09:30 2025 +0000
+
+    task2
+
+commit eda9c177fb498de8abdbc219d1729a92f000e1af (HEAD -> main)
+Author: manisnat <LiZaP707464@mail.ru>
+Date:   Tue Jul 15 13:58:02 2025 +0000
+
+    task 1 and 2
+
+commit 31339a1b45b2ef17f563bf38ed6c44468932c626
+Author: manisnat <LiZaP707464@mail.ru>
+Date:   Tue Jul 15 11:22:21 2025 +0000
+
+    tree commit
+
+commit 7c99652aefb534a01c891814be6ded87ae6e5b73
+Author: manisnat <LiZaP707464@mail.ru>
+Date:   Tue Jul 15 11:21:10 2025 +0000
+
+    two commit
+
+commit 128115195874a632677081ab72aa0720a650c3d0
+Author: manisnat <LiZaP707464@mail.ru>
+Date:   Tue Jul 15 10:40:31 2025 +0000
+
+    first commit
+
+root@eltex-practice2-pg1-v27:~/eltex_clone/eltex# git diff main origin/main
+diff --git a/module1/task2/practice2_eltex-pg1-v27_part3.log b/module1/task2/practice2_eltex-pg1-v27_part3.log
+new file mode 100644
+index 0000000..86bfd17
+--- /dev/null
++++ b/module1/task2/practice2_eltex-pg1-v27_part3.log
+@@ -0,0 +1,191 @@
++root@eltex-practice2-pg1-v27:~# git config --global user.name "manisnat"
++root@eltex-practice2-pg1-v27:~# git config --global user.email "LiZaP707464@mail.ru"
++root@eltex-practice2-pg1-v27:~# git config --global init.defaultBranch main
++
++root@eltex-practice2-pg1-v27:~# apt update
++Пол:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
++Сущ:2 http://ru.archive.ubuntu.com/ubuntu noble InRelease             
++Пол:3 http://ru.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB] 
++Пол:4 http://ru.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
++Пол:5 http://ru.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [163 kB]
++Пол:6 http://ru.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+
+root@eltex-practice2-pg1-v27:~/eltex_clone/eltex# git merge origin/main
+Updating eda9c17..f00d8bd
+Fast-forward
+ module1/task2/practice2_eltex-pg1-v27_part3.log | 191 ++++++++++++++++++++++++
+ 1 file changed, 191 insertions(+)
+ create mode 100644 module1/task2/practice2_eltex-pg1-v27_part3.log
 
 
