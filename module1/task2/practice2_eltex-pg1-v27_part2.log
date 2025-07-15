@@ -1,0 +1,164 @@
+root@eltex-practice2-pg1-v27:~# journalctl -b --since "июл 11 02:21:12" --until "июл 11 02:21:32"
+июл 11 02:21:12 localhost kernel: Linux version 6.8.0-55-generic (buildd@lcy02-amd64-095) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubunt>
+июл 11 02:21:12 localhost kernel: Command line: BOOT_IMAGE=/vmlinuz-6.8.0-55-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro
+июл 11 02:21:12 localhost kernel: KERNEL supported cpus:
+июл 11 02:21:12 localhost kernel:   Intel GenuineIntel
+июл 11 02:21:12 localhost kernel:   AMD AuthenticAMD
+июл 11 02:21:12 localhost kernel:   Hygon HygonGenuine
+июл 11 02:21:12 localhost kernel:   Centaur CentaurHauls
+июл 11 02:21:12 localhost kernel:   zhaoxin   Shanghai  
+июл 11 02:21:12 localhost kernel: BIOS-provided physical RAM map:
+июл 11 02:21:12 localhost kernel: BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+июл 11 02:21:12 localhost kernel: BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+июл 11 02:21:12 localhost kernel: BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+июл 11 02:21:12 localhost kernel: BIOS-e820: [mem 0x0000000000100000-0x00000000bffd9fff] usable
+июл 11 02:21:12 localhost kernel: BIOS-e820: [mem 0x00000000bffda000-0x00000000bfffffff] reserved
+июл 11 02:21:12 localhost kernel: BIOS-e820: [mem 0x00000000feffc000-0x00000000feffffff] reserved
+июл 11 02:21:12 localhost kernel: BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+июл 11 02:21:12 localhost kernel: BIOS-e820: [mem 0x0000000100000000-0x000000013fffffff] usable
+июл 11 02:21:12 localhost kernel: BIOS-e820: [mem 0x000000fd00000000-0x000000ffffffffff] reserved
+июл 11 02:21:12 localhost kernel: NX (Execute Disable) protection: active
+июл 11 02:21:12 localhost kernel: APIC: Static calls initialized
+...
+июл 11 02:21:30 localhost systemd[1]: Started getty@tty1.service - Getty on tty1.
+июл 11 02:21:30 localhost systemd[1]: Reached target getty.target - Login Prompts.
+июл 11 02:21:30 localhost snapd[700]: overlord.go:274: Acquiring state lock file
+июл 11 02:21:30 localhost snapd[700]: overlord.go:279: Acquired state lock file
+июл 11 02:21:30 localhost ModemManager[770]: <msg> ModemManager (version 1.23.4) starting in system bus...
+июл 11 02:21:30 eltex-practice2-pg1-v27 systemd-hostnamed[725]: Hostname set to <eltex-practice2-pg1-v27> (transient)
+июл 11 02:21:30 eltex-practice2-pg1-v27 systemd-resolved[679]: System hostname changed to 'eltex-practice2-pg1-v27'.
+июл 11 02:21:30 eltex-practice2-pg1-v27 udisksd[710]: Error probing device: Error sending ATA command IDENTIFY PACKET DEVICE to '/dev/sr>
+                                                         0000: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00    ................
+                                                         0010: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00    ................
+                                                          (g-io-error-quark, 0)
+июл 11 02:21:30 eltex-practice2-pg1-v27 systemd[1]: Started udisks2.service - Disk Manager.
+июл 11 02:21:30 eltex-practice2-pg1-v27 udisksd[710]: Acquired the name org.freedesktop.UDisks2 on the system message bus
+июл 11 02:21:31 eltex-practice2-pg1-v27 kernel: NET: Registered PF_QIPCRTR protocol family
+июл 11 02:21:31 eltex-practice2-pg1-v27 systemd[1]: Started ModemManager.service - Modem Manager.
+июл 11 02:21:31 eltex-practice2-pg1-v27 systemd[1]: grub-common.service: Deactivated successfully.
+июл 11 02:21:31 eltex-practice2-pg1-v27 kernel: workqueue: drm_fb_helper_damage_work hogged CPU for >10000us 64 times, consider switchin>
+июл 11 02:21:31 eltex-practice2-pg1-v27 systemd[1]: Finished grub-common.service - Record successful boot for GRUB.
+июл 11 02:21:31 eltex-practice2-pg1-v27 systemd[1]: Starting grub-initrd-fallback.service - GRUB failed boot detection...
+
+root@eltex-practice2-pg1-v27:~# find / -name auth.log
+/var/log/auth.log
+root@eltex-practice2-pg1-v27:~# awk '{print $3, substr($0, index($0,$4))}' /var/log/auth.log | sed 's/\[.*]://g' | sort
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+CRON pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+sshd Accepted publickey for root from 172.16.8.4 port 41284 ssh2: RSA SHA256:yE3yakxVvz9KhQ6R5GDdO1bb3RZIqPsWuM3MmnJy0kQ
+sshd Accepted publickey for root from 172.16.8.4 port 47028 ssh2: RSA SHA256:yE3yakxVvz9KhQ6R5GDdO1bb3RZIqPsWuM3MmnJy0kQ
+sshd Accepted publickey for root from 172.16.8.4 port 55806 ssh2: RSA SHA256:yE3yakxVvz9KhQ6R5GDdO1bb3RZIqPsWuM3MmnJy0kQ
+sshd Disconnected from user root 172.16.8.4 port 41284
+sshd Disconnected from user root 172.16.8.4 port 55806
+sshd pam_unix(sshd:session): session closed for user root
+sshd pam_unix(sshd:session): session closed for user root
+sshd pam_unix(sshd:session): session opened for user root(uid=0) by root(uid=0)
+sshd pam_unix(sshd:session): session opened for user root(uid=0) by root(uid=0)
+sshd pam_unix(sshd:session): session opened for user root(uid=0) by root(uid=0)
+sshd Received disconnect from 172.16.8.4 port 41284:11: disconnected by user
+sshd Received disconnect from 172.16.8.4 port 55806:11: disconnected by user
+systemd-logind New session 578 of user root.
+systemd-logind New session 587 of user root.
+systemd-logind New session 726 of user root.
+systemd-logind Removed session 578.
+systemd-logind Removed session 587.
+systemd-logind Session 578 logged out. Waiting for processes to exit.
+systemd-logind Session 587 logged out. Waiting for processes to exit.
+
+root@eltex-practice2-pg1-v27:~# awk '{print $3}' /var/log/auth.log | sed 's/\[.*//' | sort | uniq -c | sort -nr
+    792 CRON
+     14 sshd
+      7 systemd-logind
+      4 polkitd
+
+root@eltex-practice2-pg1-v27:~# awk -F: '$7 == "/usr/sbin/nologin" {print $3 "," $1}' /etc/passwd | sort -k1 -nr | while IFS=, read uid username; do groups=$(id -nG "$username"); echo "$uid $username: $groups"; done
+65534 nobody: nogroup
+1002 user3: user3 users new_users_group
+998 systemd-network: systemd-network
+997 systemd-timesync: systemd-timesync
+992 systemd-resolve: systemd-resolve
+991 polkitd: polkitd
+989 fwupd-refresh: fwupd-refresh
+109 sshd: nogroup
+108 usbmux: plugdev
+107 landscape: landscape
+105 tcpdump: tcpdump
+104 uuidd: uuidd
+103 syslog: syslog adm
+101 messagebus: messagebus
+42 _apt: nogroup
+39 irc: irc
+38 list: list
+34 backup: backup
+33 www-data: www-data
+13 proxy: proxy
+10 uucp: uucp
+9 news: news
+8 mail: mail
+7 lp: lp
+6 man: man
+5 games: games
+3 sys: sys
+2 bin: bin
+1 daemon: daemon
+
+root@eltex-practice2-pg1-v27:~# dmesg | awk '/kernel/'
+[    0.067548] Booting paravirtualized kernel on KVM
+[    0.068976] Unknown kernel command line parameters "BOOT_IMAGE=/vmlinuz-6.8.0-55-generic", will be passed to user space.
+[    0.136359] Memory: 3933488K/4193760K available (22528K kernel code, 4443K rwdata, 14344K rodata, 4988K init, 4716K bss, 260012K reserved, 0K cma-reserved)
+[    0.623268] Loaded X.509 cert 'Build time autogenerated kernel key: e0bedf6fa049a1e09bd65ebab3904f14cdd5bc68'
+[    0.726979] Loaded X.509 cert 'Build time autogenerated kernel key: e0bedf6fa049a1e09bd65ebab3904f14cdd5bc68'
+[    0.750367] Freeing unused kernel image (initmem) memory: 4988K
+[    0.751069] Write protecting the kernel read-only data: 38912k
+[    0.752772] Freeing unused kernel image (rodata/data gap) memory: 2040K
+[   28.707749] systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+[   28.717147] systemd[1]: Mounting sys-kernel-debug.mount - Kernel Debug File System...
+[   28.721667] systemd[1]: Mounting sys-kernel-tracing.mount - Kernel Trace File System...
+
+root@eltex-practice2-pg1-v27:~# awk 'END {print NR}' /var/log/kern.log
+34
+
+root@eltex-practice2-pg1-v27:~# awk '
+    BEGIN { RS = ""; FS = "\n" }
+    {
+        cmd = ""; start = ""; end = ""
+        for (i = 1; i <= NF; i++) {
+            if ($i ~ /^Commandline:/) cmd = $i
+            if ($i ~ /^Start-Date:/) start = $i
+            if ($i ~ /^End-Date:/) end = $i
+        }
+        if (cmd && start && end) { 
+            print cmd "; " start "; " end
+        }
+    }
+' /var/log/apt/history.log 
+...
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-12  07:21:09; End-Date: 2025-07-12  07:21:29
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-12  07:21:30; End-Date: 2025-07-12  07:21:44
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-12  07:21:46; End-Date: 2025-07-12  07:21:57
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-12  07:21:59; End-Date: 2025-07-12  07:22:06
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-12  07:22:08; End-Date: 2025-07-12  07:22:25
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-12  07:22:27; End-Date: 2025-07-12  07:22:30
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-12  07:22:32; End-Date: 2025-07-12  07:22:36
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-12  07:22:39; End-Date: 2025-07-12  07:22:46
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-12  07:22:48; End-Date: 2025-07-12  07:23:30
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-12  07:23:32; End-Date: 2025-07-12  07:23:42
+Commandline: apt-get install bzip2; Start-Date: 2025-07-13  10:08:03; End-Date: 2025-07-13  10:08:06
+Commandline: apt install 7zip; Start-Date: 2025-07-13  10:11:35; End-Date: 2025-07-13  10:11:38
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-15  06:37:23; End-Date: 2025-07-15  06:37:33
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-15  06:37:36; End-Date: 2025-07-15  06:37:58
+Commandline: /usr/bin/unattended-upgrade; Start-Date: 2025-07-15  06:38:01; End-Date: 2025-07-15  06:38:03
+

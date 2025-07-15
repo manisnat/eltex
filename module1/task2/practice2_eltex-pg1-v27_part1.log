@@ -1,0 +1,489 @@
+~# ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/eltex-pg1-v27/.ssh/id_rsa): 
+/home/eltex-pg1-v27/.ssh/id_rsa already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/eltex-pg1-v27/.ssh/id_rsa
+Your public key has been saved in /home/eltex-pg1-v27/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:yE3yakxVvz9KhQ6R5GDdO1bb3RZIqPsWuM3MmnJy0kQ eltex-pg1-v27@eltex-2025-summer
+The key's randomart image is:
++---[RSA 3072]----+
+|        o.o.o..  |
+|       . =.+.... |
+|      . o = .o o+|
+|     . B E .+o. =|
+|      + S +.o... |
+|     o . + + o   |
+|      + o B + o  |
+|     . + =.O . . |
+|        *oo .    |
++----[SHA256]-----+
+
+~# ssh-copy-id root@172.16.9.201
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/eltex-pg1-v27/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@172.16.9.201's password: 
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'root@172.16.9.201'"
+and check to make sure that only the key(s) you wanted were added.
+
+~# cat .ssh/*.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDK0nkfSb+tg5OYMGYQl7QqGIRDgElGM70T+yJw3nmJBPlBMW/Ys7z/U0qhlRtLvWYSeaD58PzGJdPBqU5S2u0uPaHLWkWRXo4DAJvMLpyZJaAE3AHew4e+wQyWDfmJHpRXaiHWaw93fnIOVLUOg/+sNohULOOgbn+dMffg05S5ImPjlZ/n4jbOCyUOfh3MHF4Gy2km+5qvPo+o/n3udw2ie0Fh5pvbCm49zjyeKZFCJebwJsJt/8Cp+hd517CibLTEUhOzv/ZgpW8wHaicDjU4LS2sw4n09Og9Pttwbk8SYBnby53BnE11N7DuNn/86tmUBv+E4mx123RKNlBhgSTcskhKSEx6FI2gh4ZPWwOtV0myA7RqcUUlbTmWKPVApLGL5QKOe6OBhw5Uh9wXoSl4qSiZRtoq9wR/ZNvKapoepJViiKlKYCZpb1mZ0+O0S1tm9sYYzOSk75tRJF9Py6JXmfDF/KJUtIBnF/4w6olFaPbhOP6VLCpzt7j7alBfW60= eltex-pg1-v27@eltex-2025-summer
+
+~# ssh root@172.16.9.201
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-55-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Fri Jul 11 05:06:09 AM UTC 2025
+
+  System load:  0.0                Processes:              113
+  Usage of /:   37.9% of 14.66GB   Users logged in:        1
+  Memory usage: 5%                 IPv4 address for ens18: 172.16.9.201
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Fri Jul 11 03:52:20 2025 from 172.16.8.4
+root@eltex-practice2-pg1-v27:~# 
+
+~# cat .ssh/authorized_keys 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCeSRJniCY+XYg9ma9TnMz+De+SEIAuCbK/N8iHJHwtW/O+HIFl4gsD1e8SkWU3sD8gcAkR1UCcF3KGxN4DVxfsMkaZp1/8J32/lGDCYPhVcU7aQHMG2AD5a2rh4WwqiBNj2cps1wb1qaGD4E6gk9hW53NKuzMc9twi2PHQ6Jtn+PLpDyZ97KMd7AHKIoQtMuf7l9vh6JiLxWos6dpcHoJq/CDAcZHZIa40RJez8vrPKPOvw34FKH0c/nt3SrKjAlB3ImVgI85Nou5E/nQYx1Kd/UKEDuoNL/a3Q5ono8Z5AuaA8Gd3P2xmn2+f5OHVXQJx2H446yCY8Ix6B2bSEKRQSagjaIgc/N6ns9fBIs1oKgWboSqylBpbbz8Fih4baP25nFXAypNG1bb8Di4HSdTg5k9OzNAOTzwsLV3LlJuAVcxVJ6c3OCe3MB/Xgv3LNZHdauMpd5yknCNzP8sdlkZhvBOAS/DSrq8vjiWg8e/I/qT4RbeDmk8NkeH1BM6xzKM= eltex-pg1-v27@eltex-2025-summer
+
+~# useradd -m -s /bin/bash user1
+~# passwd user1
+New password: 
+Retype new password: 
+passwd: password updated successfully
+
+~# adduser user2
+info: Adding user `user2' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user2' (1001) ...
+info: Adding new user `user2' (1001) with group `user2 (1001)' ...
+info: Creating home directory `/home/user2' ...
+info: Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for user2
+Enter the new value, or press ENTER for the default
+        Full Name []: 
+        Room Number []: 
+        Work Phone []: 
+        Home Phone []: 
+        Other []: 
+Is the information correct? [Y/n] 
+info: Adding new user `user2' to supplemental / extra groups `users' ...
+info: Adding user `user2' to group `users' ...
+
+~# adduser user3
+info: Adding user `user3' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user3' (1002) ...
+info: Adding new user `user3' (1002) with group `user3 (1002)' ...
+info: Creating home directory `/home/user3' ...
+info: Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for user3
+Enter the new value, or press ENTER for the default
+        Full Name []: 
+        Room Number []: 
+        Work Phone []: 
+        Home Phone []: 
+        Other []: 
+Is the information correct? [Y/n] 
+info: Adding new user `user3' to supplemental / extra groups `users' ...
+info: Adding user `user3' to group `users' ...
+
+~# usermod -s /usr/sbin/nologin user3
+~# su - user3
+This account is currently not available.
+su - user3 -s /bin/bash
+user3@eltex-practice2-pg1-v27:~$ logout
+root@eltex-practice2-pg1-v27:~# 
+
+~# sudo groupsudo usermod -a -G new_users_group user1
+~# groups user1
+user1 : user1 new_users_group
+~# id -gn user1
+user1
+~# sudo usermod -a -G new_users_group user2
+~# sudo usermod -a -G new_users_group user3
+~# groups user2
+user2 : user2 users new_users_group
+~# groups user3
+user3 : user3 users new_users_group
+~# id -gn user2
+user2
+~# id -gn user3
+user3
+
+~# mkdir -p opt/share
+chown :new_users_group opt/share
+~/opt# ls -l
+total 4
+drwxr-xr-x 2 root new_users_group 4096 Jul 11 12:02 share
+~/opt# chmod 2775 share
+~/opt# ls -l
+total 4
+drwxrwsr-x 2 root new_users_group 4096 Jul 11 12:02 share
+
+~# su user1
+user1@eltex-practice2-pg1-v27:/root$ umask 004
+~# vi .bashrc
+~# cat .bashrc
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+umask 004
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
+    else
+        color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+~# su - user1
+user1@eltex-practice2-pg1-v27:~$ cd /opt/share
+user1@eltex-practice2-pg1-v27:/opt/share$ touch user1.txt
+user1@eltex-practice2-pg1-v27:/opt/share$ ls -l
+total 0
+-rw-rw--w- 1 user1 new_users_group 0 Jul 11 13:46 user1.txt
+
+~# su - user2
+user3@eltex-practice2-pg1-v27:~$ cd /opt/share
+user3@eltex-practice2-pg1-v27:/opt/share$ touch user2.txt
+user3@eltex-practice2-pg1-v27:/opt/share$ ls -l
+total 0
+-rw-rw--w- 1 user1 new_users_group 0 Jul 11 13:46 user1.txt
+-rw-rw-r-- 1 user2 new_users_group 0 Jul 11 13:48 user2.txt
+
+~# su - user3 -s /bin/bash
+user3@eltex-practice2-pg1-v27:~$ cd /opt/share
+user3@eltex-practice2-pg1-v27:/opt/share$ touch user3.txt
+user3@eltex-practice2-pg1-v27:/opt/share$ ls -l
+total 0
+-rw-rw--w- 1 user1 new_users_group 0 Jul 11 13:46 user1.txt
+-rw-rw-r-- 1 user2 new_users_group 0 Jul 11 13:48 user2.txt
+-rw-rw-r-- 1 user3 new_users_group 0 Jul 11 13:58 user3.txt
+
+user3@eltex-practice2-pg1-v27:/opt/share$ ls
+user1.txt  user2.txt  user3.txt
+user3@eltex-practice2-pg1-v27:/opt/share$ rm user1.txt 
+user3@eltex-practice2-pg1-v27:/opt/share$ ls
+user2.txt  user3.txt
+
+user1@eltex-practice2-pg1-v27:/opt/share$ ls
+user2.txt  user3.txt
+user1@eltex-practice2-pg1-v27:/opt/share$ rm user2.txt 
+user1@eltex-practice2-pg1-v27:/opt/share$ ls
+user3.txt
+
+user2@eltex-practice2-pg1-v27:/opt/share$ ls
+user3.txt
+user2@eltex-practice2-pg1-v27:/opt/share$ rm user3.txt 
+user2@eltex-practice2-pg1-v27:/opt/share$ ls
+user2@eltex-practice2-pg1-v27:/opt/share$ 
+
+~# chmod +t opt/share
+~# cd opt/
+~/opt# ls -l
+total 4
+drwxrwsr-t 2 root new_users_group 4096 Jul 11 12:02 share
+
+user1@eltex-practice2-pg1-v27:/opt/share$ touch user1.txt
+user2@eltex-practice2-pg1-v27:/opt/share$ touch user2.txt
+user3@eltex-practice2-pg1-v27:/opt/share$ touch user3.txt
+ls
+user1.txt  user2.txt  user3.txt
+
+
+user3@eltex-practice2-pg1-v27:/opt/share$ rm user1.txt 
+rm: cannot remove 'user1.txt': Operation not permitted
+user1@eltex-practice2-pg1-v27:/opt/share$ rm user2.txt 
+rm: cannot remove 'user2.txt': Operation not permitted
+user2@eltex-practice2-pg1-v27:/opt/share$ rm user3.txt 
+rm: cannot remove 'user3.txt': Operation not permitted
+~# ls
+user1.txt  user2.txt  user3.txt
+
+~# sudo visudo
+user1 ALL=(ALL:ALL) /usr/bin/dmesg
+~# su - user1
+user1@eltex-practice2-pg1-v27:~$ sudo dmesg
+[104420.224929] systemd[1]: Stopped systemd-timesyncd.service - Network Time Synchronization.
+[104420.231261] systemd[1]: Starting systemd-timesyncd.service - Network Time Synchronization...
+[104420.231361] systemd[1]: Stopping systemd-udevd.service - Rule-based Manager for Device Events and Files...
+[104420.232590] systemd[1]: Stopping udisks2.service - Disk Manager...
+[104420.244858] systemd[1]: systemd-udevd.service: Deactivated successfully.
+[104420.248251] systemd[1]: Stopped systemd-udevd.service - Rule-based Manager for Device Events and Files.
+[104420.251230] systemd[1]: Starting systemd-udevd.service - Rule-based Manager for Device Events and Files...
+[104420.252352] systemd[1]: udisks2.service: Deactivated successfully.
+[104420.252433] systemd[1]: Stopped udisks2.service - Disk Manager.
+[104420.262593] systemd[1]: Starting udisks2.service - Disk Manager...
+[104420.262696] systemd[1]: Started systemd-networkd.service - Network Configuration.
+[104420.263011] systemd[1]: Started multipathd.service - Device-Mapper Multipath Device Controller.
+[104420.266242] systemd[1]: Starting systemd-networkd-wait-online.service - Wait for Network to be Configured...
+[104420.282396] systemd[1]: Starting systemd-hostnamed.service - Hostname Service...
+[104420.291589] systemd[1]: Finished systemd-networkd-wait-online.service - Wait for Network to be Configured.
+[104420.305858] audit: type=1400 audit(1752304866.497:323): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="rsyslogd" pid=21459 comm="apparmor_parser"
+[104420.319643] systemd[1]: Started polkit.service - Authorization Manager.
+[104420.328230] systemd[1]: Starting ModemManager.service - Modem Manager...
+[104420.335259] systemd[1]: Started packagekit.service - PackageKit Daemon.
+[104420.346330] systemd[1]: Started systemd-timesyncd.service - Network Time Synchronization.
+[104420.354781] systemd[1]: Started systemd-udevd.service - Rule-based Manager for Device Events and Files.
+[104420.359216] systemd[1]: Started systemd-resolved.service - Network Name Resolution.
+[104420.361857] systemd[1]: Started systemd-hostnamed.service - Hostname Service.
+[104420.362034] systemd[1]: Started ModemManager.service - Modem Manager.
+[104420.389959] systemd[1]: Started udisks2.service - Disk Manager.
+[104420.519886] systemd[1]: Started rsyslog.service - System Logging Service.
+[104420.817663] systemd[1]: systemd-journald.service: Deactivated successfully.
+[104420.817804] systemd[1]: Stopped systemd-journald.service - Journal Service.
+[104420.823238] systemd[1]: Starting systemd-journald.service - Journal Service...
+[104420.829558] systemd-journald[21494]: Collecting audit messages is disabled.
+[104421.120013] systemd[1]: Started systemd-journald.service - Journal Service.
+
+~# touch dmesg_siud.sh
+~# vi dmesg_siud.sh
+~# cat dmesg_siud.sh 
+#!/bin/bash
+/usr/bin/dmesg
+~# ls -l
+total 12
+-rw-r--r-- 1 root root   27 Jul 12 12:20 dmesg_suid.sh
+drwxr-xr-x 3 root root 4096 Jul 11 12:02 opt
+-rw-r--r-- 1 root root 3561 Jul 11 05:10 practice2_eltex-pg1-v27_part1.log
+~# chmod +x dmesg_suid.sh 
+~# sudo chmod +s dmesg_suid.sh 
+~# ls -l
+total 12
+-rwsr-sr-x 1 root root   27 Jul 12 12:20 dmesg_suid.sh
+drwxr-xr-x 3 root root 4096 Jul 11 12:02 opt
+-rw-r--r-- 1 root root 3561 Jul 11 05:10 practice2_eltex-pg1-v27_part1.log
+
+SUID не работает напрямую с .sh скриптами
+
+~# chage -l user1
+Last password change                                    : Jul 11, 2025
+Password expires                                        : never
+Password inactive                                       : never
+Account expires                                         : never
+Minimum number of days between password change          : 0
+Maximum number of days between password change          : 99999
+Number of days of warning before password expires       : 7
+~# chage -M 10 user1
+~# chage -l user1
+Last password change                                    : Jul 11, 2025
+Password expires                                        : Jul 21, 2025
+Password inactive                                       : never
+Account expires                                         : never
+Minimum number of days between password change          : 0
+Maximum number of days between password change          : 10
+Number of days of warning before password expires       : 7
+~# chage -M 10 user2
+~# chage -M 10 user3
+
+~# vi /etc/motd
+~# cat /etc/motd
+Елизавета Потапова
+
+~# rsync -av /etc/ /root/etc_backup/
+
+~# tar -czvf etc_backup_gzip.tar.gz /root/etc_backup
+~# apt-get install bzip2
+~# tar -cjvf etc_backup_bzip2.tar.bz2 /root/etc_backup
+~# tar -cvf etc_backup_7zip.tar /root/etc_backup
+~# apt install 7zip
+~# 7z a etc_backup_7zip.tar.7z etc_backup_7zip.tar
+~# ls -lh
+total 5,0M
+-rwxr-xr-x   1 root user2   27 июл 12 12:28 dmesg_suid.sh
+drwxr-xr-x 109 root root  4,0K июл 12 14:26 etc_backup
+-rw-r--r--   1 root root  3,4M июл 13 10:10 etc_backup_7zip.tar
+-rw-r--r--   1 root root  476K июл 13 10:11 etc_backup_7zip.tar.7z
+-rw-r--r--   1 root root  554K июл 13 10:09 etc_backup_bzip2.tar.bz2
+-rw-r--r--   1 root root  583K июл 13 10:03 etc_backup_gzip.tar.gz
+drwxr-xr-x   3 root root  4,0K июл 11 12:02 opt
+-rw-r--r--   1 root root  3,5K июл 11 05:10 practice2_eltex-pg1-v27_part1.log
+
+~# vi /etc/motd
+~# cat /etc/motd
+Елизавета Потапова
+2025-07-13 19:05
+~# rsync -av /etc/ /root/etc_backup/
+sending incremental file list
+./
+motd
+
+sent 69.961 bytes  received 286 bytes  140.494,00 bytes/sec
+total size is 2.366.504  speedup is 33,69
+~# gzip -d etc_backup_gzip.tar.gz 
+~# tar -uvf etc_backup_gzip.tar root/etc_backup/motd
+~# gzip etc_backup_gzip.tar 
+
+~# mkdir archive_temp
+~# tar -xjf etc_backup_bzip2.tar.bz2 -C archive_temp
+~# diff -r archive_temp/root/etc_backup /root/etc_backup
+diff -r archive_temp/root/etc_backup/default/locale /root/etc_backup/default/locale
+1c1
+< LANG=en_US.UTF-8
+---
+> LANG=ru_RU.UTF-8
+diff -r archive_temp/root/etc_backup/locale.conf /root/etc_backup/locale.conf
+1c1
+< LANG=en_US.UTF-8
+---
+> LANG=ru_RU.UTF-8
+diff -r archive_temp/root/etc_backup/locale.gen /root/etc_backup/locale.gen
+400c400
+< # ru_RU.UTF-8 UTF-8
+---
+> ru_RU.UTF-8 UTF-8
+diff -r archive_temp/root/etc_backup/motd /root/etc_backup/motd
+1a2
+> 2025-07-13 19:05
+
+~# mkdir etc_backup_gzip etc_backup_7zip
+~# tar -xzf etc_backup_gzip.tar.gz -C etc_backup_gzip
+~# 7z x etc_backup_7zip.tar.7z -so | tar -xvf - -C etc_backup_7zip
+~# diff -u /root/etc_backup_7zip/root/etc_backup /root/etc_backup_gzip/root/etc_backup
+
+diff -u /root/etc_backup_7zip/root/etc_backup/motd /root/etc_backup_gzip/root/et
+c_backup/motd
+--- /root/etc_backup_7zip/root/etc_backup/motd  2025-07-12 14:16:33.000000000 +0
+000
++++ /root/etc_backup_gzip/root/etc_backup/motd  2025-07-13 13:22:55.749983733 +0
+000
+@@ -1 +1,2 @@
+ Елизавета Потапова
++2025-07-13 19:05
+

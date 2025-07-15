@@ -1,0 +1,24 @@
+mkdir -p D1/D2/D3
+cd D1/D2
+touch file.txt
+echo Hello > file.txt
+cd D3
+ln -s /home/eltex-pg1-v27/D1/D2/file.txt softlink.txt
+ln /home/eltex-pg1-v27/D1/D2/file.txt hardlink.txt
+ls -li
+cat softlink.txt
+cat hardlink.txt
+cd ..
+mv file.txt ../
+cd D3
+cat softlink.txt
+cat hardlink.txt
+cd ../../
+rm -R D2
+find / -type f -size +20M
+find / -type f -size +20M -print0 | xargs -0 du -sh
+find / -type f -size +20M > $USER_part3_gt50M.log
+find / -type f -mmin -1440
+which find
+file /usr/bin/find
+ls -l /boot/initrd.img*
