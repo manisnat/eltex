@@ -1,0 +1,191 @@
+root@eltex-practice2-pg1-v27:~# git config --global user.name "manisnat"
+root@eltex-practice2-pg1-v27:~# git config --global user.email "LiZaP707464@mail.ru"
+root@eltex-practice2-pg1-v27:~# git config --global init.defaultBranch main
+
+root@eltex-practice2-pg1-v27:~# apt update
+Пол:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu noble InRelease             
+Пол:3 http://ru.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB] 
+Пол:4 http://ru.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Пол:5 http://ru.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [163 kB]
+Пол:6 http://ru.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+Пол:7 http://ru.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [377 kB]
+Пол:8 http://security.ubuntu.com/ubuntu noble-security/main amd64 Components [21,6 kB]
+Пол:9 http://ru.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+Пол:10 http://ru.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7 088 B]
+Пол:11 http://ru.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+Пол:12 http://ru.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [28,2 kB]
+Пол:13 http://ru.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+Пол:14 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+Пол:15 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Components [52,2 kB]
+Пол:16 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+Получено 1 029 kB за 1с (1 160 kB/s)        
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Может быть обновлено 58 пакетов. Запустите «apt list --upgradable» для их показа.
+root@eltex-practice2-pg1-v27:~# apt install git gh
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Уже установлен пакет git самой новой версии (1:2.43.0-1ubuntu7.3).
+git помечен как установленный вручную.
+Следующие НОВЫЕ пакеты будут установлены:
+  gh
+Обновлено 0 пакетов, установлено 1 новых пакетов, для удаления отмечено 0 пакетов, и 58 пакетов не обновлено.
+Необходимо скачать 8 826 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 45,4 MB.
+Хотите продолжить? [Д/н] Д 
+root@eltex-practice2-pg1-v27:~# apt install git gh
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Уже установлен пакет git самой новой версии (1:2.43.0-1ubuntu7.3).
+git помечен как установленный вручную.
+Следующие НОВЫЕ пакеты будут установлены:
+  gh
+Обновлено 0 пакетов, установлено 1 новых пакетов, для удаления отмечено 0 пакетов, и 58 пакетов не обновлено.
+Необходимо скачать 8 826 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 45,4 MB.
+Хотите продолжить? [Д/н] Д 
+root@eltex-practice2-pg1-v27:~# apt install git gh
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Уже установлен пакет git самой новой версии (1:2.43.0-1ubuntu7.3).
+git помечен как установленный вручную.
+Следующие НОВЫЕ пакеты будут установлены:
+  gh
+Обновлено 0 пакетов, установлено 1 новых пакетов, для удаления отмечено 0 пакетов, и 58 пакетов не обновлено.
+Необходимо скачать 8 826 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 45,4 MB.
+Хотите продолжить? [Д/н] Д 
+...
+root@eltex-practice2-pg1-v27:~# gh --version
+gh version 2.45.0 (2024-11-01 Ubuntu 2.45.0-1ubuntu0.2)
+https://github.com/cli/cli/releases/tag/v2.45.0
+root@eltex-practice2-pg1-v27:~# git --version
+git version 2.43.0
+
+root@eltex-practice2-pg1-v27:~# ssh-keygen -t ed25519 -f ~/.ssh/github_manisnat
+Generating public/private ed25519 key pair.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/github_manisnat
+Your public key has been saved in /root/.ssh/github_manisnat.pub
+The key fingerprint is:
+SHA256:tqQjmuYKCJ48VuiU/Lj0atdGAn7LGiBsZc6SK1gNTIU root@eltex-practice2-pg1-v27
+The key's randomart image is:
++--[ED25519 256]--+
+|  .o.            |
+| oE              |
+|  oo             |
+|o.Oo             |
+|=Xo+.   S        |
+|%oBo . + .       |
+|=%o.* o .        |
+|=.** + .         |
+|oBB..            |
++----[SHA256]-----+
+
+root@eltex-practice2-pg1-v27:~# gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? SSH
+? Upload your SSH public key to your GitHub account? /root/.ssh/github_manisnat.pub
+? Title for your SSH key: eltex-practice2-pg1-v27
+? How would you like to authenticate GitHub CLI? Login with a web browser
+
+✓ Authentication complete.
+- gh config set -h github.com git_protocol ssh
+✓ Configured git protocol
+! Authentication credentials saved in plain text
+✓ Uploaded the SSH key to your GitHub account: /root/.ssh/github_manisnat.pub
+✓ Logged in as manisnat
+
+root@eltex-practice2-pg1-v27:~# gh auth setup-git --hostname github.com
+
+root@eltex-practice2-pg1-v27:~# gh auth status
+github.com
+  ✓ Logged in to github.com account manisnat (/root/.config/gh/hosts.yml)
+  - Active account: true
+  - Git operations protocol: ssh
+  - Token: gho_************************************
+  - Token scopes: 'admin:public_key', 'gist', 'read:org', 'repo'
+
+root@eltex-practice2-pg1-v27:~# gh repo create --public eltex
+✓ Created repository manisnat/eltex on GitHub
+  https://github.com/manisnat/eltex
+
+root@eltex-practice2-pg1-v27:~# mkdir ~/eltex && cd ~/eltex
+root@eltex-practice2-pg1-v27:~/eltex# echo "Практики eltex " >> README.md
+root@eltex-practice2-pg1-v27:~/eltex# git init
+Initialized empty Git repository in /root/eltex/.git/
+root@eltex-practice2-pg1-v27:~/eltex# git add README.md 
+root@eltex-practice2-pg1-v27:~/eltex# git commit -m "first commit"
+[main (root-commit) 1281151] first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+root@eltex-practice2-pg1-v27:~/eltex# git branch -M main
+root@eltex-practice2-pg1-v27:~/eltex# git remote add origin https://github.com/manisnat/eltex.git
+root@eltex-practice2-pg1-v27:~/eltex# git status
+On branch main
+nothing to commit, working tree clean
+root@eltex-practice2-pg1-v27:~/eltex# git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 267 bytes | 267.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/manisnat/eltex.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+root@eltex-practice2-pg1-v27:~/eltex# mkdir -p module1/task1
+root@eltex-practice2-pg1-v27:~/eltex# mkdir -p module1/task2
+root@eltex-practice2-pg1-v27:~/eltex# mkdir -p module1/task3
+eltex-pg1-v27@eltex-2025-summer:~$ scp /home/eltex-pg1-v27/practice2_eltex-pg1-v27_part1.log root@172.16.9.201:/root/eltex/module1/task2
+practice2_eltex-pg1-v27_part1.log             100%   18KB  29.0MB/s   00:00    
+eltex-pg1-v27@eltex-2025-summer:~$ scp /home/eltex-pg1-v27/practice2_eltex-pg1-v27_part2.log root@172.16.9.201:/root/eltex/module1/task2
+practice2_eltex-pg1-v27_part2.log             100%   11KB 368.9KB/s   00:00    
+eltex-pg1-v27@eltex-2025-summer:~$ scp /home/eltex-pg1-v27/eltex-pg1-v27_part3.log root@172.16.9.201:/root/eltex/module1/task1
+eltex-pg1-v27_part3.log                       100%  506     1.6MB/s   00:00    
+root@eltex-practice2-pg1-v27:~/eltex# git add .
+root@eltex-practice2-pg1-v27:~/eltex# git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   module1/task1/eltex-pg1-v27_part3.log
+	new file:   module1/task2/practice2_eltex-pg1-v27_part1.log
+	new file:   module1/task2/practice2_eltex-pg1-v27_part2.log
+
+root@eltex-practice2-pg1-v27:~/eltex# git commit -m "task 1 and 2"
+[main eda9c17] task 1 and 2
+ 3 files changed, 677 insertions(+)
+ create mode 100644 module1/task1/eltex-pg1-v27_part3.log
+ create mode 100644 module1/task2/practice2_eltex-pg1-v27_part1.log
+ create mode 100644 module1/task2/practice2_eltex-pg1-v27_part2.log
+root@eltex-practice2-pg1-v27:~/eltex# git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 9.84 KiB | 9.84 MiB/s, done.
+Total 8 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/manisnat/eltex.git
+   31339a1..eda9c17  main -> main
+
+root@eltex-practice2-pg1-v27:~# mkdir ~/eltex_clone && cd ~/eltex_clone
+root@eltex-practice2-pg1-v27:~/eltex_clone# git clone https://github.com/manisnat/eltex.git
+Cloning into 'eltex'...
+remote: Enumerating objects: 17, done.
+remote: Counting objects: 100% (17/17), done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 17 (delta 0), reused 17 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (17/17), 10.53 KiB | 829.00 KiB/s, done.
+
+
+
+
