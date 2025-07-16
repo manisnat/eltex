@@ -1,24 +1,165 @@
-mkdir -p D1/D2/D3
-cd D1/D2
-touch file.txt
-echo Hello > file.txt
-cd D3
-ln -s /home/eltex-pg1-v27/D1/D2/file.txt softlink.txt
-ln /home/eltex-pg1-v27/D1/D2/file.txt hardlink.txt
-ls -li
-cat softlink.txt
-cat hardlink.txt
-cd ..
-mv file.txt ../
-cd D3
-cat softlink.txt
-cat hardlink.txt
-cd ../../
-rm -R D2
-find / -type f -size +20M
-find / -type f -size +20M -print0 | xargs -0 du -sh
-find / -type f -size +20M > $USER_part3_gt50M.log
-find / -type f -mmin -1440
-which find
-file /usr/bin/find
-ls -l /boot/initrd.img*
+eltex-pg1-v27@eltex-2025-summer:~$ mkdir -p D1/D2/D3
+
+eltex-pg1-v27@eltex-2025-summer:~$ cd D1/D2
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2$ touch file.txt
+
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2$ echo Hello > file.txt
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2$ cat file.txt
+Hello
+
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2$ cd D3
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2/D3$ ln -s /home/eltex-pg1-v27/D1/D2/file.txt softlink.txt
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2/D3$ ln /home/eltex-pg1-v27/D1/D2/file.txt hardlink.txt
+
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2/D3$ ls -li
+total 4
+1048679 -rw-r--r-- 2 eltex-pg1-v27 eltex-pg1-v27  6 Jul  8 15:54 hardlink.txt
+1048687 lrwxrwxrwx 1 eltex-pg1-v27 eltex-pg1-v27 34 Jul  9 20:44 softlink.txt -> /home/eltex-pg1-v27/D1/D2/file.txt
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2$ cat file.txt
+Hello
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2/D3$ cat softlink.txt
+Hello
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2/D3$ cat hardlink.txt
+Hello
+
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2$ mv file.txt ../
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2$ ls
+D3
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2$ cd ..
+eltex-pg1-v27@eltex-2025-summer:~/D1$ ls
+D2  file.txt
+
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2/D3$ cat softlink.txt
+cat: softlink.txt: No such file or directory
+eltex-pg1-v27@eltex-2025-summer:~/D1/D2/D3$ cat hardlink.txt
+Hello
+
+eltex-pg1-v27@eltex-2025-summer:~/D1$ ls
+D2  file.txt
+eltex-pg1-v27@eltex-2025-summer:~/D1$ rm -R D2
+file.txt
+
+eltex-pg1-v27@eltex-2025-summer:~$ find / -type f -size +20M
+/boot/initrd.img-6.1.0-31-amd64
+/boot/initrd.img-6.1.0-32-amd64
+/boot/initrd.img-6.1.0-27-amd64
+find: ‘/var/tmp/systemd-private-fb575e658e7949f598cbb62809d3c923-systemd-timesyncd.service-RPTM7o’: Permission denied
+find: ‘/var/tmp/systemd-private-fb575e658e7949f598cbb62809d3c923-systemd-logind.service-GFZKrl’: Permission denied
+find: ‘/var/log/private’: Permission denied
+find: ‘/var/cache/apparmor/201d1af9.0’: Permission denied
+/var/cache/apt/srcpkgcache.bin
+/var/cache/apt/pkgcache.bin
+find: ‘/var/cache/apt/archives/partial’: Permission denied
+find: ‘/var/cache/private’: Permission denied
+find: ‘/var/cache/ldconfig’: Permission denied
+/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_binary-amd64_Packages
+find: ‘/var/lib/apt/lists/partial’: Permission denied
+/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_source_Sources
+/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_i18n_Translation-en
+find: ‘/var/lib/private’: Permission denied
+find: ‘/var/spool/cron/crontabs’: Permission denied
+find: ‘/root’: Permission denied
+find: ‘/etc/lvm/backup’: Permission denied
+find: ‘/etc/ssl/private’: Permission denied
+
+eltex-pg1-v27@eltex-2025-summer:~$ find / -type f -size +20M -print0 | xargs -0 du -sh
+find: ‘/var/log/private’: Permission denied
+find: ‘/var/cache/apparmor/201d1af9.0’: Permission denied
+find: ‘/var/cache/apt/archives/partial’: Permission denied
+find: ‘/var/cache/private’: Permission denied
+find: ‘/var/cache/ldconfig’: Permission denied
+find: ‘/var/lib/apt/lists/partial’: Permission denied
+find: ‘/var/lib/private’: Permission denied
+find: ‘/var/spool/cron/crontabs’: Permission denied
+find: ‘/root’: Permission denied
+find: ‘/etc/lvm/backup’: Permission denied
+find: ‘/etc/ssl/private’: Permission denied
+31M	/usr/bin/x86_64-linux-gnu-lto-dump-12
+31M	/usr/lib/gcc/x86_64-linux-gnu/12/lto1
+32M	/usr/lib/gcc/x86_64-linux-gnu/12/cc1
+30M	/usr/lib/x86_64-linux-gnu/libicudata.so.72.1
+0	/proc/kcore
+16K	/home/eltex-pg1-v27/.log
+33M	/boot/initrd.img-6.1.0-31-amd64
+33M	/boot/initrd.img-6.1.0-32-amd64
+33M	/boot/initrd.img-6.1.0-27-amd64
+38M	/var/cache/apt/srcpkgcache.bin
+38M	/var/cache/apt/pkgcache.bin
+48M	/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_binary-amd64_Packages
+49M	/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_source_Sources
+32M	/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_i18n_Translation-en
+
+eltex-pg1-v27@eltex-2025-summer:~$ find / -type f -size +20M > $USER_part3_gt50M.log
+eltex-pg1-v27@eltex-2025-summer:~$ cat $USER_part3_gt50M.log
+/usr/bin/x86_64-linux-gnu-lto-dump-12
+/usr/lib/gcc/x86_64-linux-gnu/12/lto1
+/usr/lib/gcc/x86_64-linux-gnu/12/cc1
+/usr/lib/x86_64-linux-gnu/libicudata.so.72.1
+/proc/kcore
+/boot/initrd.img-6.1.0-31-amd64
+/boot/initrd.img-6.1.0-32-amd64
+/boot/initrd.img-6.1.0-27-amd64
+/var/cache/apt/srcpkgcache.bin
+/var/cache/apt/pkgcache.bin
+/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_binary-amd64_Packages
+/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_source_Sources
+/var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_i18n_Translation-en
+
+
+eltex-pg1-v27@eltex-2025-summer:~$ find / -type f -mmin -1440
+/var/log/apt/history.log
+/var/log/apt/term.log
+/var/log/apt/eipp.log.xz
+/var/log/wtmp
+find: ‘/var/log/private’: Permission denied
+/var/log/dpkg.log
+/var/log/btmp
+/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/user-1088.journal
+/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/user-1064.journal
+/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/user-1081.journal
+/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/user-1063.journal
+/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/system.journal
+/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/user-1084.journal
+/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/user-1082.journal
+/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/user-1067.journal
+/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/user-1069.journal
+/var/log/journal/8247b53b6ae84ae0ad9bb1c96113fd29/user-1086.journal
+/var/log/lastlog
+find: ‘/var/cache/apparmor/201d1af9.0’: Permission denied
+/var/cache/apt/pkgcache.bin
+find: ‘/var/cache/apt/archives/partial’: Permission denied
+/var/cache/man/index.db
+find: ‘/var/cache/private’: Permission denied
+find: ‘/var/cache/ldconfig’: Permission denied
+find: ‘/var/lib/apt/lists/partial’: Permission denied
+/var/lib/apt/daily_lock
+/var/lib/apt/extended_states
+find: ‘/var/lib/private’: Permission denied
+/var/lib/dpkg/info/libunwind8:amd64.list
+/var/lib/dpkg/info/strace.list
+/var/lib/dpkg/lock
+/var/lib/dpkg/status-old
+/var/lib/dpkg/triggers/Lock
+/var/lib/dpkg/status
+/var/lib/logrotate/status
+/var/lib/systemd/timesync/clock
+/var/lib/systemd/timers/stamp-man-db.timer
+/var/lib/systemd/timers/stamp-apt-daily-upgrade.timer
+/var/lib/systemd/timers/stamp-apt-daily.timer
+/var/lib/systemd/timers/stamp-logrotate.timer
+find: ‘/var/spool/cron/crontabs’: Permission denied
+find: ‘/root’: Permission denied
+/etc/ld.so.cache
+find: ‘/etc/lvm/backup’: Permission denied
+find: ‘/etc/ssl/private’: Permission denied
+
+eltex-pg1-v27@eltex-2025-summer:~$ which find
+/usr/bin/find
+
+eltex-pg1-v27@eltex-2025-summer:~$ file /usr/bin/find
+/usr/bin/find: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=5545a6c7162d325fbe5ffabcbfe4e5521b66ce70, for GNU/Linux 3.2.0, stripped
+
+eltex-pg1-v27@eltex-2025-summer:~$ ls -l /boot/initrd.img*
+-rw-r--r-- 1 root root 33902207 Mar  6 13:15 /boot/initrd.img-6.1.0-27-amd64
+-rw-r--r-- 1 root root 33914345 Mar  6 13:14 /boot/initrd.img-6.1.0-31-amd64
+-rw-r--r-- 1 root root 33912626 Mar 29 01:07 /boot/initrd.img-6.1.0-32-amd64

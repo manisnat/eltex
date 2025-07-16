@@ -1,0 +1,221 @@
+eltex-pg1-v27@eltex-2025-summer:~$ screen -S 'whoami'_part2
+
+eltex-pg1-v27@eltex-2025-summer:~$ ls
+ls           lsb_release  lsinitramfs  lslocks      lsmod        lspci
+lsattr       lscpu        lsipc        lslogins     lsns         lsusb
+lsblk        lsfd         lsirq        lsmem        lsof    
+
+eltex-pg1-v27@eltex-2025-summer:~$ compgen -v HIST
+HISTCMD
+HISTCONTROL
+HISTFILE
+HISTFILESIZE
+HISTSIZE
+
+eltex-pg1-v27@eltex-2025-summer:~$ echo $HISTSIZE
+1000
+
+eltex-pg1-v27@eltex-2025-summer:~$ ls .
+./             .bash_history  .bashrc        .lesshst       .log           .ssh/
+../            .bash_logout   .config/       .local/        .profile       .viminfo
+
+eltex-pg1-v27@eltex-2025-summer:~$ export HISTTIMEFORMAT='%F %T '
+eltex-pg1-v27@eltex-2025-summer:~$ history
+...
+  431  2025-07-16 14:26:46 ssh root@172.16.9.201
+  432  2025-07-16 14:26:46 ls
+  433  2025-07-16 14:26:46 pwd
+  434  2025-07-16 14:26:46 ls
+  435  2025-07-16 14:26:46 pwd prctice2_eltex-pg1-v27_part1.log
+  436  2025-07-16 14:26:46 ssh root@172.16.9.201
+  437  2025-07-16 14:26:46 ls
+  438  2025-07-16 14:26:46 git
+  439  2025-07-16 14:26:46 ssh root@172.16.9.201
+  440  2025-07-16 14:26:46 ls
+  441  2025-07-16 14:26:46 ssh root@172.16.9.201
+  442  2025-07-16 14:30:49 compgen -v HIST
+  443  2025-07-16 14:31:14 echo $HISTSIZE
+  444  2025-07-16 14:32:31 export HISTTIMEFORMAT='%F %T '
+  445  2025-07-16 14:32:50 history
+
+eltex-pg1-v27@eltex-2025-summer:~$ date
+Tue Jule 8 12:23:14 PM +07 2025
+
+eltex-pg1-v27@eltex-2025-summer:~$ history
+...
+  446  2025-07-16 14:33:43 date
+  447  2025-07-16 14:34:56 history
+eltex-pg1-v27@eltex-2025-summer:~$ cat .bash_history 
+...
+ssh root@172.16.9.201
+ls
+ssh root@172.16.9.201
+
+eltex-pg1-v27@eltex-2025-summer:~$ PROMPT_COMMAND='history -a'
+eltex-pg1-v27@eltex-2025-summer:~$ cat .bash_history
+...
+history
+#1752651471
+cat .bash_history 
+#1752651552
+PROMPT_COMMAND='history -a'
+
+eltex-pg1-v27@eltex-2025-summer:~$ DATE=2025-07-08
+eltex-pg1-v27@eltex-2025-summer:~$ echo $DATE
+2025-07-08
+eltex-pg1-v27@eltex-2025-summer:~$ TIME=12:43
+eltex-pg1-v27@eltex-2025-summer:~$ echo $TIME
+12:43
+eltex-pg1-v27@eltex-2025-summer:~$ DATE_TIME="$DATE $TIME"
+eltex-pg1-v27@eltex-2025-summer:~$ echo $DATE_TIME
+2025-07-08 12:43
+
+eltex-pg1-v27@eltex-2025-summer:~$ ls /bin /sbin | grep '[0-9]'
+addr2line
+b2sum
+base32
+base64
+bunzip2
+bzip2
+bzip2recover
+c89
+c89-gcc
+c99
+c99-gcc
+cpan5.36-x86_64-linux-gnu
+cpp-12
+diff3
+enc2xs
+gcc-12
+gcc-ar-12
+gcc-nm-12
+gcc-ranlib-12
+gcov-12
+gcov-dump-12
+gcov-tool-12
+grub-menulst2cfg
+grub-mkpasswd-pbkdf2
+grub-syslinux2cfg
+h2ph
+h2xs
+i386
+linux32
+linux64
+lto-dump-12
+md5sum
+md5sum.textutils
+pdb3
+pdb3.11
+perl5.36.0
+perl5.36-x86_64-linux-gnu
+ping4
+ping6
+pl2pm
+pod2html
+pod2man
+pod2text
+pod2usage
+py3clean
+py3compile
+py3versions
+pydoc3
+pydoc3.11
+pygettext3
+pygettext3.11
+python3
+python3.11
+sha1sum
+sha224sum
+sha256sum
+sha384sum
+sha512sum
+ssh-argv0
+systemd-id128
+traceroute6
+traceroute6.db
+x86_64
+x86_64-linux-gnu-addr2line
+x86_64-linux-gnu-ar
+x86_64-linux-gnu-as
+x86_64-linux-gnu-c++filt
+x86_64-linux-gnu-cpp
+x86_64-linux-gnu-cpp-12
+x86_64-linux-gnu-dwp
+x86_64-linux-gnu-elfedit
+x86_64-linux-gnu-gcc
+x86_64-linux-gnu-gcc-12
+x86_64-linux-gnu-gcc-ar
+x86_64-linux-gnu-gcc-ar-12
+x86_64-linux-gnu-gcc-nm
+x86_64-linux-gnu-gcc-nm-12
+x86_64-linux-gnu-gcc-ranlib
+x86_64-linux-gnu-gcc-ranlib-12
+x86_64-linux-gnu-gcov
+x86_64-linux-gnu-gcov-12
+x86_64-linux-gnu-gcov-dump
+x86_64-linux-gnu-gcov-dump-12
+x86_64-linux-gnu-gcov-tool
+x86_64-linux-gnu-gcov-tool-12
+x86_64-linux-gnu-gold
+x86_64-linux-gnu-gp-archive
+x86_64-linux-gnu-gp-collect-app
+x86_64-linux-gnu-gp-display-html
+x86_64-linux-gnu-gp-display-src
+x86_64-linux-gnu-gp-display-text
+x86_64-linux-gnu-gprof
+x86_64-linux-gnu-gprofng
+x86_64-linux-gnu-ld
+x86_64-linux-gnu-ld.bfd
+x86_64-linux-gnu-ld.gold
+x86_64-linux-gnu-lto-dump
+x86_64-linux-gnu-lto-dump-12
+x86_64-linux-gnu-nm
+x86_64-linux-gnu-objcopy
+x86_64-linux-gnu-objdump
+x86_64-linux-gnu-ranlib
+x86_64-linux-gnu-readelf
+x86_64-linux-gnu-size
+x86_64-linux-gnu-strings
+x86_64-linux-gnu-strip
+dumpe2fs
+e2freefrag
+e2fsck
+e2image
+e2label
+e2mmpstatus
+e2scrub
+e2scrub_all
+e2undo
+e4crypt
+e4defrag
+fsck.ext2
+fsck.ext3
+fsck.ext4
+killall5
+mke2fs
+mkfs.ext2
+mkfs.ext3
+mkfs.ext4
+resize2fs
+tune2fs
+update-grub2
+
+eltex-pg1-v27@eltex-2025-summer:~$ PS1="\u@\h-\$(date +%H:%M)> "
+eltex-pg1-v27@eltex-2025-summer-13:24>
+
+eltex-pg1-v27@eltex-2025-summer-13:31> echo $$
+829
+eltex-pg1-v27@eltex-2025-summer-13:31> bash --init-file <(echo "PS1=\"$PS1\"")
+eltex-pg1-v27@eltex-2025-summer-13:32> echo $$
+841
+
+eltex-pg1-v27@eltex-2025-summer-13:32> mkdir $(date +%Y)-{01..12}
+eltex-pg1-v27@eltex-2025-summer-13:32> ls
+2025-01  2025-03  2025-05  2025-07  2025-09  2025-11  report_part1.txt
+2025-02  2025-04  2025-06  2025-08  2025-10  2025-12
+
+
+
+
+ 
+
