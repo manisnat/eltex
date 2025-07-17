@@ -1,0 +1,190 @@
+root@eltex-practice2-pg1-v27:~# su - user1
+Warning: your password will expire in 5 days.
+user1@eltex-practice2-pg1-v27:~$
+
+user1@eltex-practice2-pg1-v27:~$ ps -eo nlwp | tail -n +2 | awk '{if ($1!=1) num_threads += 1} END { print num_threads }'
+10
+
+user1@eltex-practice2-pg1-v27:~$ top
+top - 09:18:17 up 5 days,  6:57,  4 users,  load average: 0,00, 0,00, 0,00
+Tasks: 168 total,   1 running, 165 sleeping,   2 stopped,   0 zombie
+%Cpu(s):  0,0 us,  0,0 sy,  0,0 ni,100,0 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st 
+MiB Mem :   3916,0 total,   2163,4 free,    543,4 used,   1501,4 buff/cache     
+MiB Swap:   3185,0 total,   3185,0 free,      0,0 used.   3372,6 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND             
+      1 root      20   0   22596  13824   9600 S   0,0   0,3   0:09.84 systemd             
+      2 root      20   0       0      0      0 S   0,0   0,0   0:00.03 kthreadd            
+      3 root      20   0       0      0      0 S   0,0   0,0   0:00.00 pool_workqueue_rel+ 
+      4 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/R-rcu_g     
+      5 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/R-rcu_p     
+      6 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/R-slub_     
+      7 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/R-netns     
+     10 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/0:0H-event+ 
+     12 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/R-mm_pe     
+     13 root      20   0       0      0      0 I   0,0   0,0   0:00.00 rcu_tasks_kthread   
+     14 root      20   0       0      0      0 I   0,0   0,0   0:00.00 rcu_tasks_rude_kth+ 
+     15 root      20   0       0      0      0 I   0,0   0,0   0:00.00 rcu_tasks_trace_kt+ 
+     16 root      20   0       0      0      0 S   0,0   0,0   0:00.14 ksoftirqd/0         
+     17 root      20   0       0      0      0 I   0,0   0,0   0:03.28 rcu_preempt         
+     18 root      rt   0       0      0      0 S   0,0   0,0   0:01.77 migration/0         
+     19 root     -51   0       0      0      0 S   0,0   0,0   0:00.00 idle_inject/0       
+     20 root      20   0       0      0      0 S   0,0   0,0   0:00.00 cpuhp/0             
+
+
+Для настройки необходимо ввести команду f
+Выключение столбцов VIRT, RES, SHR осуществляется с помощью пробела
+Включение RUSER также осуществляется пробелом, но чтобы переместить его необходимо зажать Enter и стрелочку вправо
+Затем с помощью стрелочек переместить в нужное место
+
+top - 09:35:07 up 5 days,  7:14,  5 users,  load average: 0,00, 0,00, 0,00
+Tasks: 173 total,   1 running, 170 sleeping,   2 stopped,   0 zombie
+%Cpu(s):  0,0 us,  0,0 sy,  0,0 ni, 92,2 id,  7,8 wa,  0,0 hi,  0,0 si,  0,0 st 
+MiB Mem :   3916,0 total,   2154,6 free,    552,2 used,   1501,4 buff/cache     
+MiB Swap:   3185,0 total,   3185,0 free,      0,0 used.   3363,8 avail Mem 
+
+    PID USER     RUSER     PR  NI S  %CPU  %MEM     TIME+ COMMAND                          
+   3636 user1    user1     20   0 S   0,0   0,1   0:00.00 bash                             
+   3643 root     user1     20   0 S   0,0   0,1   0:00.02 su                               
+   3664 user1    user1     20   0 S   0,0   0,1   0:00.01 bash                             
+   3676 root     user1     20   0 S   0,0   0,1   0:00.01 su                               
+   3685 user1    user1     20   0 S   0,0   0,1   0:00.02 bash                             
+   3735 root     user1     20   0 S   0,0   0,1   0:00.01 su                               
+   3745 user1    user1     20   0 S   0,0   0,1   0:00.01 bash                             
+   3757 root     user1     20   0 S   0,0   0,1   0:00.01 su                               
+   3873 user1    user1     20   0 S   0,0   0,1   0:00.00 bash                             
+   3884 root     user1     20   0 S   0,0   0,1   0:00.01 su                               
+   3951 user1    user1     20   0 S   0,0   0,1   0:00.01 bash                             
+   3963 root     user1     20   0 S   0,0   0,1   0:00.01 su                               
+   4036 user1    user1     20   0 S   0,0   0,1   0:00.01 bash                             
+   4047 root     user1     20   0 S   0,0   0,1   0:00.02 su                               
+   4118 user1    user1     20   0 S   0,0   0,1   0:00.01 bash                            
+
+user1@eltex-practice2-pg1-v27:~$ passwd
+Changing password for user1.
+Current password: 
+
+С помощью клавиши s включаем сортировку по RUSER
+
+Fields Management for window 1:Def, whose current sort field is RUSER
+   Navigate with Up/Dn, Right selects for move then <Enter> or Left commits,
+   'd' or <Space> toggles display, 's' sets sort.  Use 'q' or <Esc> to end!
+
+* PID      = Process Id            nsIPC    = IPC namespace Inode 
+* USER     = Effective User Name   nsMNT    = MNT namespace Inode 
+* PR       = Priority              nsNET    = NET namespace Inode 
+* NI       = Nice Value            nsPID    = PID namespace Inode 
+* VIRT     = Virtual Image (KiB)   nsUSER   = USER namespace Inode
+* RES      = Resident Size (KiB)   nsUTS    = UTS namespace Inode 
+* SHR      = Shared Memory (KiB)   LXC      = LXC container name  
+* S        = Process Status        RSan     = RES Anonymous (KiB) 
+* %CPU     = CPU Usage             RSfd     = RES File-based (KiB)
+* %MEM     = Memory Usage (RES)    RSlk     = RES Locked (KiB)    
+* TIME+    = CPU Time, hundredths  RSsh     = RES Shared (KiB)    
+* COMMAND  = Command Name/Line     CGNAME   = Control Group name  
+  PPID     = Parent Process pid    NU       = Last Used NUMA node 
+  UID      = Effective User Id     LOGID    = Login User Id       
+  RUID     = Real User Id          EXE      = Executable Path     
+* RUSER    = Real User Name        RSS      = Res Mem (smaps), KiB
+
+top - 10:09:54 up 5 days,  7:49,  5 users,  load average: 0,00, 0,00, 0,00
+Tasks: 175 total,   1 running, 172 sleeping,   2 stopped,   0 zombie
+%Cpu(s):  0,0 us,  0,2 sy,  0,0 ni, 99,8 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st 
+MiB Mem :   3916,0 total,   2153,4 free,    553,1 used,   1501,7 buff/cache     
+MiB Swap:   3185,0 total,   3185,0 free,      0,0 used.   3363,0 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND    RUSER    
+   3636 user1     20   0    8672   5376   3840 S   0,0   0,1   0:00.00 bash       user1    
+   3643 root      20   0    9744   4796   4096 S   0,0   0,1   0:00.02 su         user1    
+   3664 user1     20   0    8668   5376   3840 S   0,0   0,1   0:00.01 bash       user1    
+   3676 root      20   0    9752   4800   4096 S   0,0   0,1   0:00.01 su         user1    
+   3685 user1     20   0    8672   5504   3840 S   0,0   0,1   0:00.02 bash       user1    
+   3735 root      20   0    9752   4800   4096 S   0,0   0,1   0:00.01 su         user1    
+   3745 user1     20   0    8672   5504   3840 S   0,0   0,1   0:00.01 bash       user1    
+   3757 root      20   0    9748   4928   4224 S   0,0   0,1   0:00.01 su         user1    
+   3873 user1     20   0    8668   5376   3840 S   0,0   0,1   0:00.00 bash       user1    
+   3884 root      20   0    9748   4928   4224 S   0,0   0,1   0:00.01 su         user1    
+   3951 user1     20   0    8668   5376   3840 S   0,0   0,1   0:00.01 bash       user1    
+   3963 root      20   0    9752   4800   4096 S   0,0   0,1   0:00.01 su         user1    
+   4036 user1     20   0    8668   5376   3840 S   0,0   0,1   0:00.01 bash       user1    
+   4047 root      20   0    9776   4812   4096 S   0,0   0,1   0:00.02 su         user1    
+   4118 user1     20   0    8668   5504   3840 S   0,0   0,1   0:00.01 bash       user1    
+   4136 root      20   0    9776   4812   4096 S   0,0   0,1   0:00.02 su         user1    
+   4215 user1     20   0    8668   5376   3840 S   0,0   0,1   0:00.01 bash       user1    
+   4229 root      20   0    9748   4928   4224 S   0,0   0,1   0:00.01 su         user1    
+   4245 user1     20   0    8672   5376   3840 S   0,0   0,1   0:00.00 bash       user1    
+   4253 root      20   0    9748   4924   4224 S   0,0   0,1   0:00.01 su         user1    
+   4309 user1     20   0    8668   5504   3840 S   0,0   0,1   0:00.01 bash       user1    
+   4326 root      20   0    9752   4800   4096 S   0,0   0,1   0:00.02 su         user1    
+   4337 user1     20   0    8668   5504   3840 S   0,0   0,1   0:00.01 bash       user1    
+   4354 root      20   0    9748   4928   4224 S   0,0   0,1   0:00.02 su         user1    
+  54906 user1     20   0    8672   5504   3840 S   0,0   0,1   0:00.01 bash       user1    
+  55274 user1     20   0    8648   5504   3840 S   0,0   0,1   0:00.01 bash       user1    
+  55290 user1     20   0    8648   5376   3840 S   0,0   0,1   0:00.01 bash       user1    
+  55484 root      20   0    9176   3712   3456 S   0,0   0,1   0:00.00 passwd     user1    
+  55485 user1     20   0   11956   6016   3840 R   0,3   0,2   0:00.05 top        user1    
+
+PID искомого процесса смены пароля: 55484
+
+user1@eltex-practice2-pg1-v27:~$ kill -15 55484
+user1@eltex-practice2-pg1-v27:~$ kill -2 55484
+user1@eltex-practice2-pg1-v27:~$ kill -3 55484
+user1@eltex-practice2-pg1-v27:~$ kill -9 55484
+
+После отправки сигнала 9 в терминале с запущенныс процессом получаем сообщение:
+user1@eltex-practice2-pg1-v27:~$ passwd
+Changing password for user1.
+Current password: Killed
+
+user1@eltex-practice2-pg1-v27:~$ vim ~/file_task.txt
+
+[1]+  Stopped                 vim ~/file_task.txt
+
+user1@eltex-practice2-pg1-v27:~$ sleep 600
+^Z
+[2]+  Stopped                 sleep 600
+user1@eltex-practice2-pg1-v27:~$ jobs
+[1]-  Stopped                 vim ~/file_task.txt
+[2]+  Stopped                 sleep 600
+
+user1@eltex-practice2-pg1-v27:~$ bg %2
+[2]+ sleep 600 &
+user1@eltex-practice2-pg1-v27:~$ jobs
+[1]+  Stopped                 vim ~/file_task.txt
+[2]-  Running                 sleep 600 &
+
+user1@eltex-practice2-pg1-v27:~$ pgrep -a sleep
+55883 sleep 600
+user1@eltex-practice2-pg1-v27:~$ renice -n 10 -p 55883
+55883 (process ID) old priority 0, new priority 10
+
+user1@eltex-practice2-pg1-v27:~$ top
+top - 13:32:05 up 5 days, 11:11,  4 users,  load average: 0,00, 0,00, 0,00
+Tasks: 172 total,   1 running, 168 sleeping,   3 stopped,   0 zombie
+%Cpu(s):  0,2 us,  0,0 sy,  0,0 ni, 99,8 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st 
+MiB Mem :   3916,0 total,   2160,6 free,    545,3 used,   1502,2 buff/cache     
+MiB Swap:   3185,0 total,   3185,0 free,      0,0 used.   3370,7 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND    RUSER    
+  55883 user1     30  10    5688   2048   2048 S   0,0   0,1   0:00.00 sleep      user1    
+  55892 user1     20   0   11956   6016   3840 R   0,0   0,2   0:00.18 top        user1  
+
+
+user1@eltex-practice2-pg1-v27:~$ jobs
+[1]+  Stopped                 vim ~/file_task.txt
+[2]-  Running                 sleep 600 &
+user1@eltex-practice2-pg1-v27:~$ fg %1
+vim ~/file_task.txt
+user1@eltex-practice2-pg1-v27:~$ jobs
+[2]+  Running                 sleep 600 &
+
+user1@eltex-practice2-pg1-v27:~$ trap 'echo "Меня голыми руками не возьмёшь!"' SIGINT SIGQUIT
+
+Меня голыми руками не возьмёшь!$ ^C
+
+Меня голыми руками не возьмёшь!$ ^\
+
+user1@eltex-practice2-pg1-v27:~$ kill -SIGINT $$
+Меня голыми руками не возьмёшь!
+user1@eltex-practice2-pg1-v27:~$ kill -SIGQUIT $$
+Меня голыми руками не возьмёшь!
