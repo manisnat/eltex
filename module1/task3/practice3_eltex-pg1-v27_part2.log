@@ -1,0 +1,185 @@
+user1@eltex-practice2-pg1-v27:~# touch template_task.sh 
+user1@eltex-practice2-pg1-v27:~# vi template_task.sh 
+
+
+#!/bin/bash
+
+script_name=$(basename "$0")
+if [[ "$script_name" == "template_task.sh" ]]; then
+        echo "я бригадир, сам не работаю"
+        exit 1
+fi
+
+report_file="report_${script_name%.*}.log"
+
+pid=$$
+
+start_time=$(date +%s)  
+current_date_time=$(date "+%Y-%m-%d %H:%M:%S")
+echo "[$pid] $current_date_time Скрипт запущен" >> "$report_file"
+
+random_seconds=$((RANDOM % 1771 + 30))
+
+sleep "$random_seconds"
+
+end_time=$(date +%s)
+duration_seconds=$((end_time - start_time))
+minutes=$((duration_seconds / 60))
+seconds=$((duration_seconds % 60))
+
+current_date_time=$(date "+%Y-%m-%d %H:%M:%S")
+echo "[$pid] $current_date_time Скрипт завершился, работал $minutes минут $seconds секунд" >> "$report_file"
+
+
+user1@eltex-practice2-pg1-v27:~# chmod +x template_task.sh 
+user1@eltex-practice2-pg1-v27:~# cp template_task.sh my_script.sh
+user1@eltex-practice2-pg1-v27:~# ./template_task.sh 
+я бригадир, сам не работаю
+user1@eltex-practice2-pg1-v27:~# ./my_script.sh 
+user1@eltex-practice2-pg1-v27:~# cat report_my_script.log 
+[58678] 2025-07-17 08:37:23 Скрипт запущен
+[58678] 2025-07-17 08:38:32 Скрипт завершился, работал 1 минут 9 секунд
+
+
+user1@eltex-practice2-pg1-v27:~# touch observer.sh
+user1@eltex-practice2-pg1-v27:~# vi observer.sh 
+user1@eltex-practice2-pg1-v27:~# cat observer.sh 
+#!/bin/bash
+
+CONFIG_FILE="observer.conf"
+
+LOG_FILE="observer.log"
+
+if [ ! -f "$CONFIG_FILE" ]; then
+	echo "[$(date '+%Y-%m-%d %H:%M:%S')] Ошибка: файл конфигурации $CONFIG_FILE не найден" >> "$LOG_FILE"
+	exit 1
+fi
+
+while IFS= read -r script || [ -n "$script" ]; do
+	script=$(echo "$script" | xargs)
+
+	if [[ -z "$script" || "$script" =~ ^# ]]; then
+		continue
+	fi
+
+	script_name=$(basename "$script")
+
+	if ! pgrep -f "$script_name" > /dev/null 2>&1; then
+		nohup "$script" > /dev/null 2>&1 &
+		echo "[$(date '+%Y-%m-%d %H:%M:%S')] Перезапущен скрипт: $script" >> "$LOG_FILE"
+	fi
+done < "$CONFIG_FILE"
+
+
+user1@eltex-practice2-pg1-v27:~# vi observer.conf
+user1@eltex-practice2-pg1-v27:~# cat observer.conf 
+/path/to/script1.sh
+/path/to/script2.sh
+
+# комментарий
+/path/to/script3.sh
+
+user1@eltex-practice2-pg1-v27:~# chmod +x observer.sh 
+user1@eltex-practice2-pg1-v27:~# ./observer.sh 
+user1@eltex-practice2-pg1-v27:~# cat observer.log 
+[2025-07-17 07:50:00] Перезапущен скрипт: /path/to/script1.sh
+[2025-07-17 07:50:00] Перезапущен скрипт: /path/to/script2.sh
+[2025-07-17 07:50:00] Перезапущен скрипт: /path/to/script3.sh
+
+user1@eltex-practice2-pg1-v27:~$ crontab -e
+no crontab for user1 - using an empty one
+
+Select an editor.  To change later, run 'select-editor'.
+  1. /bin/nano        <---- easiest
+  2. /usr/bin/vim.basic
+  3. /usr/bin/vim.tiny
+  4. /bin/ed
+
+Choose 1-4 [1]: 
+crontab: installing new crontab
+user1@eltex-practice2-pg1-v27:~$ crontab -l
+* * * * * /home/user1/observer.sh >> /home/user1/observer.log 2>&1
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+
+user1@eltex-practice2-pg1-v27:~$ tail -f /home/user1/observer.log 
+[2025-07-17 08:42:43] Перезапущен скрипт: /path/to/script1.sh
+[2025-07-17 08:42:43] Перезапущен скрипт: /path/to/script2.sh
+[2025-07-17 08:42:43] Перезапущен скрипт: /path/to/script3.sh
+[2025-07-17 08:46:01] Перезапущен скрипт: /path/to/script1.sh
+[2025-07-17 08:46:01] Перезапущен скрипт: /path/to/script2.sh
+[2025-07-17 08:46:01] Перезапущен скрипт: /path/to/script3.sh
+[2025-07-17 08:47:01] Перезапущен скрипт: /path/to/script1.sh
+[2025-07-17 08:47:01] Перезапущен скрипт: /path/to/script2.sh
+[2025-07-17 08:47:01] Перезапущен скрипт: /path/to/script3.sh
+
+user1@eltex-practice2-pg1-v27:~$ ln -s template_task.sh task1.sh
+user1@eltex-practice2-pg1-v27:~$ ln -s template_task.sh task2.sh
+user1@eltex-practice2-pg1-v27:~$ ln -s template_task.sh task3.sh
+user1@eltex-practice2-pg1-v27:~$ ls -l task*.sh
+lrwxrwxrwx 1 user1 user1 16 июл 17 13:20 task1.sh -> template_task.sh
+lrwxrwxrwx 1 user1 user1 16 июл 17 13:20 task2.sh -> template_task.sh
+lrwxrwxrwx 1 user1 user1 16 июл 17 13:20 task3.sh -> template_task.sh
+
+user1@eltex-practice2-pg1-v27:~$ vi observer.conf 
+user1@eltex-practice2-pg1-v27:~$ cat observer.conf 
+/home/user1/task1.sh
+/home/user1/task2.sh
+/home/user1/task3.sh
+# Исходный файл
+/home/user1/template_task.sh
+
+user1@eltex-practice2-pg1-v27:~$ ./observer.sh 
+user1@eltex-practice2-pg1-v27:~$ tail -f observer.log 
+[2025-07-17 13:22:01] Перезапущен скрипт: /path/to/script2.sh
+[2025-07-17 13:22:01] Перезапущен скрипт: /path/to/script3.sh
+[2025-07-17 13:23:01] Перезапущен скрипт: /home/user1/task1.sh
+[2025-07-17 13:23:01] Перезапущен скрипт: /home/user1/task2.sh
+[2025-07-17 13:23:01] Перезапущен скрипт: /home/user1/task3.sh
+[2025-07-17 13:23:01] Перезапущен скрипт: /home/user1/template_task.sh
+[2025-07-17 13:23:31] Перезапущен скрипт: /home/user1/template_task.sh
+[2025-07-17 13:24:01] Перезапущен скрипт: /home/user1/task2.sh
+[2025-07-17 13:24:01] Перезапущен скрипт: /home/user1/task3.sh
+[2025-07-17 13:24:01] Перезапущен скрипт: /home/user1/template_task.sh
+
+user1@eltex-practice2-pg1-v27:~$ pgrep -f "template_task.sh"
+Вывод пустой — значит, скрипт не запущен (как и задумано)
+
+user1@eltex-practice2-pg1-v27:~$ crontab -e
+Удаляем строчку с observer.sh
+user1@eltex-practice2-pg1-v27:~$ tar -czvf practice2_part2_report.tar.gz   observer.sh   template_task.sh   observer.conf   observer.log   report_*.log my_script.sh task*.sh
+observer.sh
+template_task.sh
+observer.conf
+observer.log
+report_my_script.log
+report_task1.log
+report_task2.log
+report_task3.log
+my_script.sh
+task1.sh
+task2.sh
+task3.sh
+
+
