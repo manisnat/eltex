@@ -1,6 +1,5 @@
-root@eltex-practice2-pg1-v27:~# journalctl -q -b 0 -o short-full --until "$(date -d "$(journalctl -q -b 0 -o short-full | head -1 | awk '{print $2" "$3}') + 1.5 seconds" +"%F %H:%M:%S.%N")"
+root@eltex-practice2-pg1-v27:~# journalctl -q -b -o short-full --until "$(date -d "$(journalctl -q -b -o short-full | head -1 | awk '{print $2" "$3}') + 20.0 seconds" +"%F %H:%M:%S.%N")"
 Fri 2025-07-11 02:21:12 UTC localhost kernel: Linux version 6.8.0-55-generic (buildd@lcy02-amd64-095) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #57-Ubuntu SMP PREEMPT_DYNAMIC Wed Feb 12 23:42:21 UTC 2025 (Ubuntu 6.8.0-55.57-generic 6.8.12)
-
 Fri 2025-07-11 02:21:12 UTC localhost kernel: Command line: BOOT_IMAGE=/vmlinuz-6.8.0-55-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro
 Fri 2025-07-11 02:21:12 UTC localhost kernel: KERNEL supported cpus:
 Fri 2025-07-11 02:21:12 UTC localhost kernel:   Intel GenuineIntel
@@ -28,25 +27,32 @@ Fri 2025-07-11 02:21:12 UTC localhost kernel: kvm-clock: using sched offset of 7
 Fri 2025-07-11 02:21:12 UTC localhost kernel: clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
 Fri 2025-07-11 02:21:12 UTC localhost kernel: tsc: Detected 3399.998 MHz processor
 ...
-Fri 2025-07-11 02:21:13 UTC localhost systemd-modules-load[320]: Inserted module 'msr'
-Fri 2025-07-11 02:21:13 UTC localhost systemd-modules-load[320]: Inserted module 'dm_multipath'
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: Finished systemd-modules-load.service - Load Kernel Modules.
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: Starting systemd-sysctl.service - Apply Kernel Variables...
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: Finished systemd-sysctl.service - Apply Kernel Variables.
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: modprobe@efi_pstore.service: Deactivated successfully.
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: Finished modprobe@efi_pstore.service - Load Kernel Module efi_pstore.
-Fri 2025-07-11 02:21:13 UTC localhost kernel: EXT4-fs (dm-0): re-mounted 78dfc1ab-05ce-40b9-a2f8-2f3e03168145 r/w. Quota mode: none.
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: Finished systemd-remount-fs.service - Remount Root and Kernel File Systems.
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: Activating swap swap.img.swap - /swap.img...
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: Starting multipathd.service - Device-Mapper Multipath Device Controller...
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: systemd-hwdb-update.service - Rebuild Hardware Database was skipped because of an unmet condition check (ConditionNeedsUpdate=/etc).
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: Starting systemd-journal-flush.service - Flush Journal to Persistent Storage...
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: systemd-pstore.service - Platform Persistent Storage Archival was skipped because of an unmet condition check (ConditionDirectoryNotEmpty=/sys/fs/pstore).
-Fri 2025-07-11 02:21:13 UTC localhost kernel: Adding 3261436k swap on /swap.img.  Priority:-2 extents:7 across:5735424k 
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: Starting systemd-random-seed.service - Load/Save OS Random Seed...
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: systemd-tpm2-setup.service - TPM2 SRK Setup was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: Activated swap swap.img.swap - /swap.img.
-Fri 2025-07-11 02:21:13 UTC localhost systemd[1]: Reached target swap.target - Swaps.
+Fri 2025-07-11 02:21:30 UTC localhost polkitd[695]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+Fri 2025-07-11 02:21:30 UTC localhost systemd[1]: Started rsyslog.service - System Logging Service.
+Fri 2025-07-11 02:21:30 UTC localhost systemd[1]: Finished setvtrgb.service - Set console scheme.
+Fri 2025-07-11 02:21:30 UTC localhost systemd[1]: Started polkit.service - Authorization Manager.
+Fri 2025-07-11 02:21:30 UTC localhost systemd[1]: Created slice system-getty.slice - Slice /system/getty.
+Fri 2025-07-11 02:21:30 UTC localhost systemd[1]: Starting ModemManager.service - Modem Manager...
+Fri 2025-07-11 02:21:30 UTC localhost systemd[1]: Started getty@tty1.service - Getty on tty1.
+Fri 2025-07-11 02:21:30 UTC localhost systemd[1]: Reached target getty.target - Login Prompts.
+Fri 2025-07-11 02:21:30 UTC localhost snapd[700]: overlord.go:274: Acquiring state lock file
+Fri 2025-07-11 02:21:30 UTC localhost snapd[700]: overlord.go:279: Acquired state lock file
+Fri 2025-07-11 02:21:30 UTC localhost ModemManager[770]: <msg> ModemManager (version 1.23.4) starting in system bus...
+Fri 2025-07-11 02:21:30 UTC eltex-practice2-pg1-v27 systemd-hostnamed[725]: Hostname set to <eltex-practice2-pg1-v27> (transient)
+Fri 2025-07-11 02:21:30 UTC eltex-practice2-pg1-v27 systemd-resolved[679]: System hostname changed to 'eltex-practice2-pg1-v27'.
+Fri 2025-07-11 02:21:30 UTC eltex-practice2-pg1-v27 udisksd[710]: Error probing device: Error sending ATA command IDENTIFY PACKET DEVICE to '/dev/sr0': Unexpected sense data returned:
+                                                                  0000: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00    ................
+                                                                  0010: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00    ................
+                                                                   (g-io-error-quark, 0)
+Fri 2025-07-11 02:21:30 UTC eltex-practice2-pg1-v27 systemd[1]: Started udisks2.service - Disk Manager.
+Fri 2025-07-11 02:21:30 UTC eltex-practice2-pg1-v27 udisksd[710]: Acquired the name org.freedesktop.UDisks2 on the system message bus
+Fri 2025-07-11 02:21:31 UTC eltex-practice2-pg1-v27 kernel: NET: Registered PF_QIPCRTR protocol family
+Fri 2025-07-11 02:21:31 UTC eltex-practice2-pg1-v27 systemd[1]: Started ModemManager.service - Modem Manager.
+Fri 2025-07-11 02:21:31 UTC eltex-practice2-pg1-v27 systemd[1]: grub-common.service: Deactivated successfully.
+Fri 2025-07-11 02:21:31 UTC eltex-practice2-pg1-v27 kernel: workqueue: drm_fb_helper_damage_work hogged CPU for >10000us 64 times, consider switching to WQ_UNBOUND
+Fri 2025-07-11 02:21:31 UTC eltex-practice2-pg1-v27 systemd[1]: Finished grub-common.service - Record successful boot for GRUB.
+Fri 2025-07-11 02:21:31 UTC eltex-practice2-pg1-v27 systemd[1]: Starting grub-initrd-fallback.service - GRUB failed boot detection...
+lines 1002-1049/1049 (END)
 
 
 root@eltex-practice2-pg1-v27:~# find / -name auth.log
