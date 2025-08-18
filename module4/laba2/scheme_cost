@@ -1,0 +1,71 @@
+[Root Switch] (Layer2Switch-1)
+Bridge ID  
+    Priority    4097   (priority 4096 sys-id-ext 1)
+    Address     0c44.6f9b.0000
+
+   Ports:
+   - Gi0/0: Desg FWD (Cost=4) → Layer2Switch-2
+   - Gi0/1: Desg FWD (Cost=4) → Layer2Switch-2
+   - Gi0/2: Desg FWD (Cost=4) → Layer2Switch-3
+   - Gi0/3: Desg FWD (Cost=4) → Layer2Switch-3
+   - Gi1/0: Desg FWD (Cost=4) → Layer2Switch-4
+   - Gi1/1: Desg FWD (Cost=4) → Layer2Switch-4
+   - Gi1/2: Desg FWD (Cost=4) → Layer2Switch-5
+   - Gi1/3: Desg FWD (Cost=4) → Layer2Switch-5
+
+[Layer2Switch-2]
+Bridge ID  
+    Priority    32769  (priority 32768 sys-id-ext 1)
+    Address     0ca5.0fc8.0000
+
+   Ports:
+   - Gi0/0: Alth FWD (Cost=30) → Root Switch
+   - Gi0/1: Root BLK (Cost=4) → Root Switch
+   - Gi0/2: Altn BLK (Cost=4) → Layer2Switch-3
+   - Gi0/3: Altn BLK (Cost=4) → Layer2Switch-3
+   - Gi1/0: Desg FWD (Cost=4) → Layer2Switch-4
+   - Gi1/1: Desg FWD (Cost=4) → Layer2Switch-4
+   - Gi1/2: Desg FWD (Cost=4) → Layer2Switch-5
+   - Gi1/3: Desg FWD (Cost=4) → Layer2Switch-5
+
+[Layer2Switch-3]
+Bridge ID  
+    Priority    32769  (priority 32768 sys-id-ext 1)
+    Address     0ca2.0016.0000
+
+   Ports:
+   - Gi0/0: Root FWD (Cost=4) → Root Switch
+   - Gi0/1: Altn BLK (Cost=4) → Root Switch
+   - Gi0/2: Desg FWD (Cost=4) → Layer2Switch-2
+   - Gi0/3: Desg FWD (Cost=4) → Layer2Switch-2
+   - Gi1/0: Desg FWD (Cost=4) → PC1
+   - Gi1/1: Desg FWD (Cost=4) → PC2
+
+[Layer2Switch-4]
+Bridge ID  
+    Priority    32769  (priority 32768 sys-id-ext 1)
+    Address     0cbb.e66f.0000
+
+   Ports:
+   - Gi0/0: Root FWD (Cost=4) → Root Switch
+   - Gi0/1: Altn BLK (Cost=4) → Root Switch
+   - Gi0/2: Altn BLK (Cost=4) → Layer2Switch-2
+   - Gi0/3: Altn BLK (Cost=4) → Layer2Switch-2
+   - Gi1/0: Desg FWD (Cost=4) → PC3
+   - Gi1/1: Desg FWD (Cost=4) → PC4
+
+
+[Layer2Switch-5]
+Bridge ID  
+    Priority    32769  (priority 32768 sys-id-ext 1)
+    Address     0cc2.399a.0000
+
+   Ports:
+   - Gi0/0: Root FWD (Cost=4) → Root Switch
+   - Gi0/1: Altn BLK (Cost=4) → Root Switch
+   - Gi0/2: Altn BLK (Cost=4) → Layer2Switch-2
+   - Gi0/3: Altn BLK (Cost=4) → Layer2Switch-2
+   - Gi1/0: Desg FWD (Cost=4) → PC5
+   - Gi1/1: Desg FWD (Cost=4) → PC6
+
+
